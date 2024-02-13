@@ -12,6 +12,9 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import { OrderTableFilters } from './order-table-filters'
+import { OrderTableRow } from './order-table-row'
+
 export function Orders() {
   return (
     <>
@@ -20,10 +23,7 @@ export function Orders() {
         <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
       </div>
       <div className="space-y-2.5">
-        <form className="flex items-center gap-2">
-          <span className="text-sm font-semibold">Filtros</span>
-          <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
-        </form>
+        <OrderTableFilters />
         <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -40,53 +40,7 @@ export function Orders() {
             </TableHeader>
             <TableBody>
               {Array.from({ length: 10 }, (_, i) => {
-                return (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <Button variant="outline" size={'xs'}>
-                        <Search className="h-3 w-3" />
-                        <span className="sr-only">Detalhes do pedido</span>
-                      </Button>
-                    </TableCell>
-                    <TableCell className="font-mono text-xs font-medium">
-                      awgawrhawr
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {new Intl.RelativeTimeFormat('pt', {
-                        numeric: 'auto',
-                      }).format(-15, 'minutes')}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-                        <span className="font-medium text-muted-foreground">
-                          Pendente
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-medium">
-                      Túlio de Futebol Clube
-                    </TableCell>
-                    <TableCell className="text-medium">
-                      {(149.9).toLocaleString('pt-br', {
-                        style: 'currency',
-                        currency: 'BRL',
-                      })}
-                    </TableCell>
-                    <TableCell>
-                      <Button size="xs" variant={'outline'}>
-                        <ArrowRight className="mr-2 h-3 w-3" />
-                        Aprovar
-                      </Button>
-                    </TableCell>
-                    <TableCell>
-                      <Button size="xs" variant={'ghost'}>
-                        <X className="mr-2 h-3 w-3" />
-                        Cancelar
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                )
+                return <OrderTableRow key={i} />
               })}
             </TableBody>
           </Table>
