@@ -4,6 +4,8 @@ import { DollarSign } from 'lucide-react'
 import { getMonthRevenue } from '@/api/get-month-revenue'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+import { MetricCardSkeleton } from './metric-card-skeleton'
+
 export function MonthRevenueCard() {
   const { data: monthRevenue } = useQuery({
     queryKey: ['metrics', 'month-revenue'],
@@ -42,6 +44,7 @@ export function MonthRevenueCard() {
             </p>
           </>
         )}
+        {!monthRevenue && <MetricCardSkeleton />}
       </CardContent>
     </Card>
   )

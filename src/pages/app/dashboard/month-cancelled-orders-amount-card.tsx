@@ -4,6 +4,8 @@ import { Utensils } from 'lucide-react'
 import { getMonthCanceledOrdersAmount } from '@/api/get-month-canceled-orders'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+import { MetricCardSkeleton } from './metric-card-skeleton'
+
 export function MonthCancelledOrdersAmountCard() {
   const { data: monthCanceledOrdersAmount } = useQuery({
     queryKey: ['metrics', 'month-canceled-orders-amount'],
@@ -39,6 +41,7 @@ export function MonthCancelledOrdersAmountCard() {
             </p>
           </>
         )}
+        {!monthCanceledOrdersAmount && <MetricCardSkeleton />}
       </CardContent>
     </Card>
   )
