@@ -10,8 +10,6 @@ describe('Order Status', () => {
     const statusText = wrapper.getByText('Pendente')
     const badgeElement = wrapper.getByTestId('badge')
 
-    console.log(badgeElement.outerHTML)
-
     expect(statusText).toBeInTheDocument()
     expect(badgeElement).toHaveClass('bg-slate-400')
   })
