@@ -32,7 +32,7 @@ export function SignUp() {
   })
   async function handleSignUp(data: SignUpForm) {
     try {
-      registerRestaurantFn({
+      await registerRestaurantFn({
         email: data.email,
         managerName: data.managerName,
         phone: data.phone,
@@ -67,7 +67,7 @@ export function SignUp() {
           </div>
           <form className="space-y-4" onSubmit={handleSubmit(handleSignUp)}>
             <div className="space-y-2">
-              <Label htmlFor="restaurantName">Nome do estabelcimento</Label>
+              <Label htmlFor="restaurantName">Nome do estabelecimento</Label>
               <Input
                 id="restaurantName"
                 type="text"
